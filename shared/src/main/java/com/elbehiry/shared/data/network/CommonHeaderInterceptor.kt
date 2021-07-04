@@ -1,4 +1,4 @@
-package com.elbehiry.shared.network
+package com.elbehiry.shared.data.network
 
 import okhttp3.Interceptor
 import okhttp3.Response

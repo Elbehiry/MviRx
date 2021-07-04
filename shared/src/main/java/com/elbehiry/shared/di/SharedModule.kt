@@ -1,8 +1,8 @@
 package com.elbehiry.shared.di
 
 import com.elbehiry.shared.BuildConfig
-import com.elbehiry.shared.network.CommonHeaderInterceptor
-import com.elbehiry.shared.network.HttpLogger
+import com.elbehiry.shared.data.network.CommonHeaderInterceptor
+import com.elbehiry.shared.data.network.HttpLogger
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Binds
