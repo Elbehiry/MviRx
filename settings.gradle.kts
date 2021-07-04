@@ -9,5 +9,6 @@ rootProject.name = "DinDinn"
 include(
     ":app",
     ":depconstraints",
-    ":shared"
+    ":shared",
+    ":model"
 )

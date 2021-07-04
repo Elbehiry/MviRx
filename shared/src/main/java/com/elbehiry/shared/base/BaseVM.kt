@@ -1,3 +1,19 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.elbehiry.shared.base
 
 import androidx.lifecycle.ViewModel
@@ -8,7 +24,6 @@ import io.reactivex.rxjava3.core.ObservableTransformer
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.functions.BiFunction
 import io.reactivex.rxjava3.subjects.PublishSubject
-
 
 abstract class BaseVM<A : MVIAction, S : MVIViewState, R : MVIPartialState<S>> : ViewModel() {
 
@@ -22,7 +37,6 @@ abstract class BaseVM<A : MVIAction, S : MVIViewState, R : MVIPartialState<S>> :
     abstract fun reduce(result: R, previousState: S): S
     abstract fun handle(action: Observable<A>): List<Observable<out R>>
 
-
     fun processIntents(intents: Observable<A>) {
         disposables.add(intents.subscribe(intentsSubject::onNext))
     }
@@ -30,7 +44,7 @@ abstract class BaseVM<A : MVIAction, S : MVIViewState, R : MVIPartialState<S>> :
     fun canEmitInPartialState(result: R): Boolean {
         return false
     }
-    fun stopReducingForTypes(result:R):Boolean{
+    fun stopReducingForTypes(result: R): Boolean {
         return false
     }
 
@@ -72,7 +86,6 @@ abstract class BaseVM<A : MVIAction, S : MVIViewState, R : MVIPartialState<S>> :
             .autoConnect(0)
     }
 
-
     override fun onCleared() {
         disposables.clear()
         super.onCleared()
@@ -85,9 +98,7 @@ abstract class BaseVM<A : MVIAction, S : MVIViewState, R : MVIPartialState<S>> :
             it
         }
     }
-
 }
-
 
 @CheckReturnValue
 @SchedulerSupport(SchedulerSupport.NONE)

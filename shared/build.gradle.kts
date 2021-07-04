@@ -41,7 +41,7 @@ android {
     }
     buildTypes {
         val urlName = "BASE_URL"
-        val baseUrl = "\"https://api.com/\""
+        val baseUrl = "\"https://dindinntask.getsandbox.com/\""
         getByName("release") {
             buildConfigField("String", urlName, baseUrl)
         }
@@ -80,6 +80,7 @@ dependencies {
 
     api(platform(project(":depconstraints")))
     kapt(platform(project(":depconstraints")))
+    api(project(":model"))
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     // OkHttp
