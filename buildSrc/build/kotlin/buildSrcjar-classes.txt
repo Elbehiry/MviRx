@@ -1,0 +1,1 @@
+/Users/elbehiry/Downloads/DinDinn/buildSrc/build/classes/kotlin/main/Libs.class:/Users/elbehiry/Downloads/DinDinn/buildSrc/build/classes/kotlin/main/Versions.class
