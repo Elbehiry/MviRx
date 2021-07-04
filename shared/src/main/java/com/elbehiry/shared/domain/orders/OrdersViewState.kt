@@ -14,24 +14,14 @@
  * limitations under the License.
  */
 
-package com.elbehiry.model
+package com.elbehiry.shared.domain.orders
 
-data class Orders(
-    val orders: List<OrdersItem> = emptyList()
-)
+import com.elbehiry.model.OrdersItem
+import com.elbehiry.shared.base.MVIViewState
 
-data class OrdersItem(
-    val quantity: Int? = null,
-    val addon: List<AddonItem?>? = null,
-    val alertedAt: String? = null,
-    val createdAt: String? = null,
-    val id: Int? = null,
-    val expiredAt: String? = null,
-    val title: String? = null
-)
-
-data class AddonItem(
-    val quantity: Int? = null,
-    val id: Int? = null,
-    val title: String? = null
-)
+data class OrdersViewState(
+    val orders: List<OrdersItem>? = emptyList(),
+    val loading: Boolean = false,
+    val error: Throwable? = null,
+    val empty: Boolean = false,
+) : MVIViewState

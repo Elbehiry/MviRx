@@ -14,14 +14,19 @@
  * limitations under the License.
  */
 
-package com.elbehiry.shared.data.remote
+package com.elbehiry.shared.domain.orders
 
-import com.elbehiry.model.Orders
-import io.reactivex.rxjava3.core.Single
-import retrofit2.http.GET
+import com.elbehiry.shared.base.UseCase
+import com.elbehiry.shared.data.orders.repository.IGetOrdersRepository
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
+import javax.inject.Inject
 
-interface DinDinnApi {
-
-    @GET("orders")
-    fun getOrders(): Single<Orders>
+class GetOrdersUseCase @Inject constructor(
+    private val ordersRepository: IGetOrdersRepository
+) : UseCase<Unit, Observable<OrdersListPartialState>>() {
+    override fun execute(parameters: Unit): Observable<OrdersListPartialState> {
+        return ordersRepository.getOrders().toObservable()
+            .subscribeOn(Schedulers.io())
+    }
 }

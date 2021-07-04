@@ -14,24 +14,15 @@
  * limitations under the License.
  */
 
-package com.elbehiry.model
+package com.elbehiry.shared.data.orders.remote
 
-data class Orders(
-    val orders: List<OrdersItem> = emptyList()
-)
+import com.elbehiry.model.Orders
+import com.elbehiry.shared.data.remote.DinDinnApi
+import io.reactivex.rxjava3.core.Single
+import javax.inject.Inject
 
-data class OrdersItem(
-    val quantity: Int? = null,
-    val addon: List<AddonItem?>? = null,
-    val alertedAt: String? = null,
-    val createdAt: String? = null,
-    val id: Int? = null,
-    val expiredAt: String? = null,
-    val title: String? = null
-)
-
-data class AddonItem(
-    val quantity: Int? = null,
-    val id: Int? = null,
-    val title: String? = null
-)
+class GetOrdersRemoteDataSource @Inject constructor(
+    private val api: DinDinnApi
+) : IGetOrdersDataSource {
+    override fun getOrders(): Single<Orders> = api.getOrders()
+}
