@@ -31,4 +31,6 @@ object Libs {
     const val JUNIT_EXT = "androidx.test.ext:junit"
     const val ESPRESSO = "androidx.test.espresso:espresso-core"
     const val TIMBER = "com.jakewharton.timber:timber"
+    const val NAVIGATION_KTX = "androidx.navigation:navigation-fragment-ktx"
+    const val NAVIGATION_UI = "androidx.navigation:navigation-ui-ktx"
 }

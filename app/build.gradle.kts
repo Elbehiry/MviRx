@@ -38,7 +38,6 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments["dagger.hilt.disableModulesHaveInstallInCheck"] = "true"
-                arguments["room.incremental"] = "true"
             }
         }
     }
@@ -60,6 +59,12 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+
     kotlinOptions {
         val options = this
         options.jvmTarget = "1.8"
@@ -92,4 +97,12 @@ dependencies {
     implementation(Libs.KOTLIN_STDLIB)
     // Local unit tests
     testImplementation(Libs.JUNIT)
+    //navigation
+    implementation(Libs.NAVIGATION_UI)
+    implementation(Libs.NAVIGATION_KTX)
+
+    //rx
+    implementation(Libs.RX_JAVA)
+    implementation(Libs.RX_KOTLIN)
+    implementation(Libs.RX_ANDROID)
 }

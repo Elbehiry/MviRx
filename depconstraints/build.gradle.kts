@@ -40,6 +40,7 @@ val extJunit = "1.1.2"
 val espresso = "3.3.0"
 val retrofitConverter = "3.0.0"
 val timber = "4.7.1"
+val navigation = "2.3.4"
 
 dependencies {
     constraints {
@@ -76,5 +77,7 @@ dependencies {
         api("${Libs.JUNIT_EXT}:$extJunit")
         api("${Libs.ESPRESSO}:$espresso")
         api("${Libs.TIMBER}:$timber")
+        api("${Libs.NAVIGATION_KTX}:$navigation")
+        api("${Libs.NAVIGATION_UI}:$navigation")
     }
 }

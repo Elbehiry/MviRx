@@ -36,42 +36,32 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class NetworkingBinds() {
+    @Binds
+    abstract fun bindHttpLogger(
+        httpLogger: HttpLogger,
+    ): HttpLoggingInterceptor.Logger
+}
+
 @InstallIn(SingletonComponent::class)
 @Module
 class SharedModule {
 
     @Provides
-    fun provideLoggingInterceptor(logger: HttpLoggingInterceptor.Logger): HttpLoggingInterceptor =
-        HttpLoggingInterceptor(logger).setLevel(HttpLoggingInterceptor.Level.BODY)
-
     @Singleton
-    @Provides
-    fun provideOkHttp(
-        httpLoggingInterceptor: Interceptor
-    ): OkHttpClient {
-        return OkHttpClient.Builder()
-            .connectTimeout(10L, TimeUnit.SECONDS)
-            .writeTimeout(10L, TimeUnit.SECONDS)
-            .readTimeout(30L, TimeUnit.SECONDS)
-            .addInterceptor(httpLoggingInterceptor)
-            .build()
-    }
-
-    @Provides
-    @Singleton
-    fun provideCommonHeaderInterceptor(): Interceptor {
+    fun provideCommonHeaderInterceptor(): CommonHeaderInterceptor {
         return CommonHeaderInterceptor()
     }
 
     @Provides
     fun provideHttpClient(
-        headersInterceptor: CommonHeaderInterceptor,
-        loggingInterceptor: HttpLoggingInterceptor
+        headersInterceptor: CommonHeaderInterceptor
     ): OkHttpClient = OkHttpClient.Builder()
         .connectTimeout(10L, TimeUnit.SECONDS)
         .writeTimeout(10L, TimeUnit.SECONDS)
         .readTimeout(30L, TimeUnit.SECONDS)
-        .addInterceptor(loggingInterceptor)
         .addInterceptor(headersInterceptor)
         .build()
 
@@ -93,13 +83,4 @@ class SharedModule {
     @Provides
     fun provideDinDinnApi(retrofit: Retrofit): DinDinnApi =
         retrofit.create(DinDinnApi::class.java)
-}
-
-@Module
-@InstallIn(SingletonComponent::class)
-abstract class NetworkingBinds() {
-    @Binds
-    abstract fun bindHttpLogger(
-        httpLogger: HttpLogger,
-    ): HttpLoggingInterceptor.Logger
 }
