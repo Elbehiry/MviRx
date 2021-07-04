@@ -6,6 +6,7 @@ object Libs {
     const val HILT_VIEWMODEL = "androidx.hilt:hilt-lifecycle-viewmodel"
     const val HILT_COMPILER = "com.google.dagger:hilt-android-compiler"
     const val HILT_TESTING = "com.google.dagger:hilt-android-testing"
+    const val KOTLIN_STDLIB = "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
     const val RETROFIT = "com.squareup.retrofit2:retrofit"
     const val RETROFIT_CONVERTER = "com.github.akarnokd:rxjava3-retrofit-adapter"

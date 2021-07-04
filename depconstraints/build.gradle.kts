@@ -37,9 +37,11 @@ val rxKotlin = "3.0.1"
 val junit = "4.12"
 val extJunit = "1.1.2"
 val espresso = "3.3.0"
+val retrofitConverter = "3.0.0"
 
 dependencies {
     constraints {
+        api("${Libs.KOTLIN_STDLIB}:${Versions.KOTLIN}")
         api("${Libs.CORE_KTX}:$core")
         api("${Libs.APP_COMPAT}:$appCompat")
         api("${Libs.ANDROIDX_HILT_COMPILER}:$hiltJetPack")
@@ -60,7 +62,7 @@ dependencies {
         api("${Libs.OKHTTP_MOCK_SERVER}:$okhttp")
         api("${Libs.RETROFIT}:$retrofit")
         api("${Libs.GSON_CONVERTER}:$retrofit")
-        api("${Libs.RETROFIT_CONVERTER}:$retrofit")
+        api("${Libs.RETROFIT_CONVERTER}:$retrofitConverter")
         api("${Libs.LIFECYCLE_RUN_TIME}:$lifecycle")
         api("${Libs.CONSTRAINT_LAYOUT}:$constraint")
         api("${Libs.RECYCLERVIEW}:$recyclerview")
