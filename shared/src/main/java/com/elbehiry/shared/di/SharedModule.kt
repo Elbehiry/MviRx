@@ -3,6 +3,7 @@ package com.elbehiry.shared.di
 import com.elbehiry.shared.BuildConfig
 import com.elbehiry.shared.data.network.CommonHeaderInterceptor
 import com.elbehiry.shared.data.network.HttpLogger
+import com.elbehiry.shared.data.remote.DinDinnApi
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Binds
@@ -71,6 +72,11 @@ class SharedModule {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(okHttpClient)
             .build()
+
+    @Singleton
+    @Provides
+    fun provideDinDinnApi(retrofit: Retrofit): DinDinnApi =
+        retrofit.create(DinDinnApi::class.java)
 }
 
 @Module
