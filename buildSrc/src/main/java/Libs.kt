@@ -12,7 +12,7 @@ object Libs {
     const val RETROFIT_CONVERTER = "com.github.akarnokd:rxjava3-retrofit-adapter"
     const val GSON_CONVERTER = "com.squareup.retrofit2:converter-gson"
     const val GSON = "com.google.code.gson:gson"
-    const val material = "com.google.android.material:material"
+    const val MATERIAL = "com.google.android.material:material"
     const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout"
     const val RECYCLERVIEW = "androidx.recyclerview:recyclerview"
     const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout"
@@ -30,4 +30,5 @@ object Libs {
     const val JUNIT = "junit:junit"
     const val JUNIT_EXT = "androidx.test.ext:junit"
     const val ESPRESSO = "androidx.test.espresso:espresso-core"
+    const val TIMBER = "com.jakewharton.timber:timber"
 }

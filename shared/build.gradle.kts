@@ -39,6 +39,17 @@ android {
         // Timber needs to update to new Lint API
         disable("ObsoleteLintCustomCheck")
     }
+    buildTypes {
+        val urlName = "BASE_URL"
+        val baseUrl = "\"https://api.com/\""
+        getByName("release") {
+            buildConfigField("String", urlName, baseUrl)
+        }
+        getByName("debug") {
+            buildConfigField("String", urlName, baseUrl)
+        }
+    }
+
     // debug and release variants share the same source dir
     sourceSets {
         getByName("debug") {
@@ -81,6 +92,8 @@ dependencies {
     api(Libs.RETROFIT_CONVERTER)
     api(Libs.GSON_CONVERTER)
     api(Libs.GSON)
+
+    api(Libs.TIMBER)
 
     // Kotlin
     implementation(Libs.KOTLIN_STDLIB)

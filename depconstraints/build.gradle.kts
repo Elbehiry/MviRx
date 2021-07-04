@@ -20,6 +20,7 @@ plugins {
 
 val core = "1.3.2"
 val appCompat = "1.2.0-rc01"
+val material = "1.3.0"
 val hilt = Versions.HILT
 val hiltJetPack = "1.0.0-alpha01"
 val glide = "4.12.0"
@@ -27,7 +28,7 @@ val gson = "2.8.6"
 val lifecycle = "2.3.1"
 val lifecycleExt = "2.2.0"
 val fragmentKtx = "1.3.2"
-val okhttp = "3.10.0"
+val okhttp = "4.8.1"
 val retrofit = "2.9.0"
 val constraint = "2.0.4"
 val recyclerview = "1.2.0-alpha05"
@@ -38,6 +39,7 @@ val junit = "4.12"
 val extJunit = "1.1.2"
 val espresso = "3.3.0"
 val retrofitConverter = "3.0.0"
+val timber = "4.7.1"
 
 dependencies {
     constraints {
@@ -65,6 +67,7 @@ dependencies {
         api("${Libs.RETROFIT_CONVERTER}:$retrofitConverter")
         api("${Libs.LIFECYCLE_RUN_TIME}:$lifecycle")
         api("${Libs.CONSTRAINT_LAYOUT}:$constraint")
+        api("${Libs.MATERIAL}:$material")
         api("${Libs.RECYCLERVIEW}:$recyclerview")
         api("${Libs.RX_ANDROID}:$rxAndroid")
         api("${Libs.RX_JAVA}:$rxJava")
@@ -72,5 +75,6 @@ dependencies {
         api("${Libs.JUNIT}:$junit")
         api("${Libs.JUNIT_EXT}:$extJunit")
         api("${Libs.ESPRESSO}:$espresso")
+        api("${Libs.TIMBER}:$timber")
     }
 }
