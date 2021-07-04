@@ -101,4 +101,7 @@ dependencies {
     // Dagger Hilt
     implementation(Libs.HILT_ANDROID)
     kapt(Libs.HILT_COMPILER)
+
+    implementation(Libs.RX_JAVA)
+    implementation(Libs.RX_KOTLIN)
 }
