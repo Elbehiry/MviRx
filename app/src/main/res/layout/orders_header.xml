@@ -8,6 +8,11 @@
         <variable
             name="itemCounts"
             type="Integer" />
+
+        <variable
+            name="actionHandler"
+            type="com.elbehiry.dindinn.orders.presentation.adapter.IActionHandler" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -83,6 +88,7 @@
             android:layout_gravity="bottom"
             android:layout_marginEnd="16dp"
             android:background="@android:color/transparent"
+            android:onClick="@{(v)-> actionHandler.onIngredients()}"
             android:scaleType="fitXY"
             android:src="@drawable/ic_baseline_ingre"
             app:layout_constraintBottom_toBottomOf="@+id/infoText"

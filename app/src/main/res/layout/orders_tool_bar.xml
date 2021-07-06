@@ -3,10 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="itemCounts"
             type="Integer" />
+
+        <variable
+            name="actionHandler"
+            type="com.elbehiry.dindinn.orders.presentation.adapter.IActionHandler" />
     </data>
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,8 +28,8 @@
 
             <include
                 layout="@layout/orders_header"
-                app:itemCounts="@{itemCounts}"
-                />
+                app:actionHandler="@{actionHandler}"
+                app:itemCounts="@{itemCounts}" />
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>

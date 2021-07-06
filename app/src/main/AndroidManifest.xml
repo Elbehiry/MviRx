@@ -14,6 +14,7 @@
         android:theme="@style/Theme.DinDinn">
         <activity
             android:name=".orders.presentation.OrdersActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

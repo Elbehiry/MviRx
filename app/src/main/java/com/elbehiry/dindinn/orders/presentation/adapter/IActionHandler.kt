@@ -18,4 +18,5 @@ package com.elbehiry.dindinn.orders.presentation.adapter
 
 interface IActionHandler {
     fun retry()
+    fun onIngredients()
 }

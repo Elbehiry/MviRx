@@ -14,25 +14,16 @@
  * limitations under the License.
  */
 
-package com.elbehiry.shared.data.remote
+package com.elbehiry.shared.domain.ingredients
 
 import com.elbehiry.model.IngredientsCategoryItem
 import com.elbehiry.model.IngredientsItem
-import com.elbehiry.model.OrdersItem
-import io.reactivex.rxjava3.core.Single
-import retrofit2.http.GET
-import retrofit2.http.Query
+import com.elbehiry.shared.base.MVIViewState
 
-interface DinDinnApi {
-
-    @GET("orders")
-    fun getOrders(): Single<List<OrdersItem>>
-
-    @GET("getIngredientsById")
-    fun getIngredientsById(
-        @Query("category_id") id: Int
-    ): Single<List<IngredientsItem>>
-
-    @GET("getIngredientsCategory")
-    fun getIngredientsCategory(): Single<List<IngredientsCategoryItem>>
-}
+data class IngredientsViewState(
+    val ingredientsCategory: List<IngredientsCategoryItem> = emptyList(),
+    val ingredients: List<IngredientsItem> = emptyList(),
+    val loading: Boolean = false,
+    val error: Throwable? = null,
+    val empty: Boolean = false
+) : MVIViewState

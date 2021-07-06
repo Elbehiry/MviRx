@@ -22,6 +22,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.elbehiry.dindinn.R
 import com.elbehiry.dindinn.databinding.OrdersListFragmentView
 import com.elbehiry.dindinn.orders.presentation.adapter.IActionHandler
 import com.elbehiry.dindinn.orders.presentation.adapter.OrdersAdapter
@@ -76,6 +78,10 @@ class OrderListFragment : Fragment(), IActionHandler {
     }
 
     override fun retry() {
+    }
+
+    override fun onIngredients() {
+        findNavController().navigate(R.id.action_orderListFragment_to_ingredientsFragment)
     }
 
     private fun intents() = Observable.merge(

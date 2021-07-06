@@ -14,25 +14,11 @@
  * limitations under the License.
  */
 
-package com.elbehiry.shared.data.remote
+package com.elbehiry.dindinn.ingredients.viewmodel
 
-import com.elbehiry.model.IngredientsCategoryItem
-import com.elbehiry.model.IngredientsItem
-import com.elbehiry.model.OrdersItem
-import io.reactivex.rxjava3.core.Single
-import retrofit2.http.GET
-import retrofit2.http.Query
+import com.elbehiry.shared.base.MVIAction
 
-interface DinDinnApi {
-
-    @GET("orders")
-    fun getOrders(): Single<List<OrdersItem>>
-
-    @GET("getIngredientsById")
-    fun getIngredientsById(
-        @Query("category_id") id: Int
-    ): Single<List<IngredientsItem>>
-
-    @GET("getIngredientsCategory")
-    fun getIngredientsCategory(): Single<List<IngredientsCategoryItem>>
+sealed class IngredientsActions : MVIAction {
+    object GetIngredientsCategory : IngredientsActions()
+    class GetIngredients(val id: Int) : IngredientsActions()
 }
