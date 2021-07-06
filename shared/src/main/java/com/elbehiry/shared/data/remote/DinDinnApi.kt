@@ -16,12 +16,12 @@
 
 package com.elbehiry.shared.data.remote
 
-import com.elbehiry.model.Orders
+import com.elbehiry.model.OrdersItem
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 
 interface DinDinnApi {
 
     @GET("orders")
-    fun getOrders(): Single<Orders>
+    fun getOrders(): Single<List<OrdersItem>>
 }

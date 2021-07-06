@@ -14,15 +14,20 @@
  * limitations under the License.
  */
 
-package com.elbehiry.shared.data.orders.remote
+package com.elbehiry.dindinn.utils
 
-import com.elbehiry.model.OrdersItem
-import com.elbehiry.shared.data.remote.DinDinnApi
-import io.reactivex.rxjava3.core.Single
-import javax.inject.Inject
+import androidx.annotation.CheckResult
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import io.reactivex.rxjava3.core.Observable
 
-class GetOrdersRemoteDataSource @Inject constructor(
-    private val api: DinDinnApi
-) : IGetOrdersDataSource {
-    override fun getOrders(): Single<List<OrdersItem>> = api.getOrders()
+@CheckResult
+fun SwipeRefreshLayout.rxRefreshes(): Observable<Unit> {
+    return Observable.create<Unit> {
+        setOnRefreshListener {
+            isRefreshing = false
+            it.onNext(Unit)
+        }
+    }.doOnComplete {
+        setOnRefreshListener(null)
+    }
 }

@@ -43,7 +43,7 @@ sealed class OrdersListPartialState : MVIPartialState<OrdersViewState> {
         }
     }
 
-    class Orders(private val orders: List<OrdersItem>?) : OrdersListPartialState() {
+    class Orders(private val orders: List<OrdersItem>) : OrdersListPartialState() {
         override fun reduce(oldVs: OrdersViewState, initialVs: OrdersViewState): OrdersViewState {
             return initialVs.copy(orders = orders)
         }

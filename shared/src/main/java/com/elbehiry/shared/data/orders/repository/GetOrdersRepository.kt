@@ -27,10 +27,10 @@ class GetOrdersRepository @Inject constructor(
 
     override fun getOrders(): Single<OrdersListPartialState> {
         return ordersDataSource.getOrders().map {
-            if (it.orders.isNullOrEmpty()) {
+            if (it.isNullOrEmpty()) {
                 OrdersListPartialState.Empty
             } else {
-                OrdersListPartialState.Orders(it.orders)
+                OrdersListPartialState.Orders(it)
             }
         }.onErrorReturn {
             OrdersListPartialState.Failure(it)

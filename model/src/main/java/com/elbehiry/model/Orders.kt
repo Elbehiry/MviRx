@@ -16,13 +16,9 @@
 
 package com.elbehiry.model
 
-data class Orders(
-    val orders: List<OrdersItem> = emptyList()
-)
-
 data class OrdersItem(
     val quantity: Int? = null,
-    val addon: List<AddonItem?>? = null,
+    val addon: List<AddonItem> = emptyList(),
     val alertedAt: String? = null,
     val createdAt: String? = null,
     val id: Int? = null,

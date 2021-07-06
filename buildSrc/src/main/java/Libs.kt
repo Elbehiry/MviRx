@@ -15,7 +15,8 @@ object Libs {
     const val MATERIAL = "com.google.android.material:material"
     const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout"
     const val RECYCLERVIEW = "androidx.recyclerview:recyclerview"
-    const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout"
+    const val SWIPE_REFRESH_LAYOUT = "androidx.swiperefreshlayout:swiperefreshlayout"
+    const val RX_SWIPE_REFRESH_LAYOUT = "com.jakewharton.rxbinding4:rxbinding-swiperefreshlayout"
     const val RX_ANDROID = "io.reactivex.rxjava3:rxandroid"
     const val RX_JAVA = "io.reactivex.rxjava3:rxjava"
     const val RX_KOTLIN = "io.reactivex.rxjava3:rxkotlin"
@@ -33,4 +34,5 @@ object Libs {
     const val TIMBER = "com.jakewharton.timber:timber"
     const val NAVIGATION_KTX = "androidx.navigation:navigation-fragment-ktx"
     const val NAVIGATION_UI = "androidx.navigation:navigation-ui-ktx"
+
 }

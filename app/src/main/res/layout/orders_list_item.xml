@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="OrderItemLayout">
+
+        <variable
+            name="item"
+            type="com.elbehiry.model.OrdersItem" />
+
+        <variable
+            name="addonAdapter"
+            type="com.elbehiry.dindinn.orders.presentation.adapter.AddonsAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <TextView
+            android:id="@+id/orderId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@{String.format(@string/items_id,item.id)}"
+            android:textColor="@color/textBlack"
+            android:textSize="@dimen/text003"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="#559" />
+
+        <TextView
+            android:id="@+id/orderTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="12sp"
+            android:textColor="@color/textBlack"
+            app:formatOrderDate="@{item.createdAt}"
+            app:layout_constraintStart_toStartOf="@+id/orderId"
+            app:layout_constraintTop_toBottomOf="@+id/orderId"
+            tools:text="01:34Pm" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@string/auto_reject"
+            android:textColor="@color/textBlack"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/orderRemainingTime"
+            app:layout_constraintEnd_toStartOf="@+id/orderRemainingTime"
+            app:layout_constraintTop_toTopOf="@+id/orderRemainingTime" />
+
+        <TextView
+            android:id="@+id/orderRemainingTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/textBlack"
+            android:textSize="@dimen/text_fourteen"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2 mins" />
+
+        <Button
+            android:id="@+id/Accept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@string/accept"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/orderTime" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/addonsRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/home_back"
+            app:adapter="@{addonAdapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Accept"
+            tools:listitem="@layout/addon_item_view" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addonsRecyclerView" />
+
+        <TextView
+            android:id="@+id/addonsCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="4dp"
+            android:text="@{String.format(@string/addons_items_size,item.addon.size())}"
+            android:textColor="@color/textBlack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

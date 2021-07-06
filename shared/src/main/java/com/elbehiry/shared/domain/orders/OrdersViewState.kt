@@ -20,7 +20,7 @@ import com.elbehiry.model.OrdersItem
 import com.elbehiry.shared.base.MVIViewState
 
 data class OrdersViewState(
-    val orders: List<OrdersItem>? = emptyList(),
+    val orders: List<OrdersItem> = emptyList(),
     val loading: Boolean = false,
     val error: Throwable? = null,
     val empty: Boolean = false,

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="itemCounts"
+            type="Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvIncoming"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/incoming_background"
+            android:fontFamily="@font/montserrat_bold"
+            android:paddingHorizontal="@dimen/small"
+            android:paddingVertical="2dp"
+            android:text="@string/incoming"
+            android:textColor="@color/textBlack"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMore" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginTop="16dp"
+            android:background="@color/orange"
+            android:fontFamily="@font/montserrat_light"
+            android:paddingHorizontal="@dimen/small"
+            android:text="@{String.format(@string/items_count,itemCounts)}"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvIncoming"
+            app:layout_constraintStart_toStartOf="@+id/tvIncoming"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="+2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/infoText"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/medium"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat_medium"
+            android:maxLines="1"
+            android:text="@string/mcc_holder"
+            android:textColor="@color/textBlack"
+            android:textSize="@dimen/text_fourteen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/menuButton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/menuButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_baseline_more_vert_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/ingredientsBut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_baseline_ingre"
+            app:layout_constraintBottom_toBottomOf="@+id/infoText"
+            app:layout_constraintEnd_toStartOf="@+id/infoText"
+            app:layout_constraintTop_toTopOf="@+id/infoText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

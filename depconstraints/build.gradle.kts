@@ -41,6 +41,8 @@ val espresso = "3.3.0"
 val retrofitConverter = "3.0.0"
 val timber = "4.7.1"
 val navigation = "2.3.4"
+val swipeRefreshLayout = "1.2.0-alpha01"
+val rxSwipeRefreshLayout = "4.0.0"
 
 dependencies {
     constraints {
@@ -79,5 +81,7 @@ dependencies {
         api("${Libs.TIMBER}:$timber")
         api("${Libs.NAVIGATION_KTX}:$navigation")
         api("${Libs.NAVIGATION_UI}:$navigation")
+        api("${Libs.SWIPE_REFRESH_LAYOUT}:$swipeRefreshLayout")
+        api("${Libs.RX_SWIPE_REFRESH_LAYOUT}:$rxSwipeRefreshLayout")
     }
 }

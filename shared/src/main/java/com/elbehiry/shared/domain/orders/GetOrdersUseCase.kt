@@ -28,5 +28,6 @@ class GetOrdersUseCase @Inject constructor(
     override fun execute(parameters: Unit): Observable<OrdersListPartialState> {
         return ordersRepository.getOrders().toObservable()
             .subscribeOn(Schedulers.io())
+            .startWithItem(OrdersListPartialState.Loading)
     }
 }

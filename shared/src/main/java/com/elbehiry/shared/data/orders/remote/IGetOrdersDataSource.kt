@@ -16,9 +16,9 @@
 
 package com.elbehiry.shared.data.orders.remote
 
-import com.elbehiry.model.Orders
+import com.elbehiry.model.OrdersItem
 import io.reactivex.rxjava3.core.Single
 
 interface IGetOrdersDataSource {
-    fun getOrders(): Single<Orders>
+    fun getOrders(): Single<List<OrdersItem>>
 }

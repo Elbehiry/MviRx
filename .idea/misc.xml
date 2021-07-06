@@ -4,8 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/available_orange.xml" value="0.2171875" />
+        <entry key="app/src/main/res/drawable/border_orange_background.xml" value="0.2171875" />
+        <entry key="app/src/main/res/drawable/ic_baseline_ingre.xml" value="0.2171875" />
+        <entry key="app/src/main/res/drawable/incoming_background.xml" value="0.2171875" />
         <entry key="app/src/main/res/layout/activity_orders.xml" value="0.10960144927536232" />
-        <entry key="app/src/main/res/layout/fragment_orders_list.xml" value="0.10960144927536232" />
+        <entry key="app/src/main/res/layout/addon_item_view.xml" value="0.15081521739130435" />
+        <entry key="app/src/main/res/layout/fragment_orders_list.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/orders_header.xml" value="0.15217391304347827" />
+        <entry key="app/src/main/res/layout/orders_list_item.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/orders_tool_bar.xml" value="0.15217391304347827" />
       </map>
     </option>
   </component>

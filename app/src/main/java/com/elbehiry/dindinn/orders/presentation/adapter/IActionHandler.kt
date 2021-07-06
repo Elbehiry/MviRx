@@ -14,15 +14,8 @@
  * limitations under the License.
  */
 
-package com.elbehiry.shared.data.orders.remote
+package com.elbehiry.dindinn.orders.presentation.adapter
 
-import com.elbehiry.model.OrdersItem
-import com.elbehiry.shared.data.remote.DinDinnApi
-import io.reactivex.rxjava3.core.Single
-import javax.inject.Inject
-
-class GetOrdersRemoteDataSource @Inject constructor(
-    private val api: DinDinnApi
-) : IGetOrdersDataSource {
-    override fun getOrders(): Single<List<OrdersItem>> = api.getOrders()
+interface IActionHandler {
+    fun retry()
 }

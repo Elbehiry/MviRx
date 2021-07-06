@@ -14,15 +14,17 @@
  * limitations under the License.
  */
 
-package com.elbehiry.shared.data.orders.remote
+package com.elbehiry.dindinn.utils
 
-import com.elbehiry.model.OrdersItem
-import com.elbehiry.shared.data.remote.DinDinnApi
-import io.reactivex.rxjava3.core.Single
-import javax.inject.Inject
+import androidx.recyclerview.widget.RecyclerView
 
-class GetOrdersRemoteDataSource @Inject constructor(
-    private val api: DinDinnApi
-) : IGetOrdersDataSource {
-    override fun getOrders(): Single<List<OrdersItem>> = api.getOrders()
+fun <T> RecyclerView.Adapter<*>.propagateTo(
+    oldList: MutableList<T>,
+    block: DiffUtilBuilder<T>.() -> Unit,
+) {
+    DiffUtilBuilder<T>().also {
+        it.adapter = this
+        it.oldItems = oldList
+        block(it)
+    }.propagate()
 }

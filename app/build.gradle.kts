@@ -97,12 +97,15 @@ dependencies {
     implementation(Libs.KOTLIN_STDLIB)
     // Local unit tests
     testImplementation(Libs.JUNIT)
-    //navigation
+    // navigation
     implementation(Libs.NAVIGATION_UI)
     implementation(Libs.NAVIGATION_KTX)
 
-    //rx
+    // rx
     implementation(Libs.RX_JAVA)
     implementation(Libs.RX_KOTLIN)
     implementation(Libs.RX_ANDROID)
+
+    implementation(Libs.SWIPE_REFRESH_LAYOUT)
+    implementation(Libs.RX_SWIPE_REFRESH_LAYOUT)
 }
