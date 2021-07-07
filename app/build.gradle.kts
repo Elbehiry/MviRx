@@ -108,4 +108,7 @@ dependencies {
 
     implementation(Libs.SWIPE_REFRESH_LAYOUT)
     implementation(Libs.RX_SWIPE_REFRESH_LAYOUT)
+
+    implementation(Libs.GLIDE)
+    kapt(Libs.GLIDE_COMPILER)
 }

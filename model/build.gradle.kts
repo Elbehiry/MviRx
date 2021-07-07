@@ -24,7 +24,6 @@ dependencies {
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     // ThreeTenBP for the shared module only. Date and time API for Java.
-    implementation(Libs.CORE_KTX)
     implementation(Libs.KOTLIN_STDLIB)
 }
 

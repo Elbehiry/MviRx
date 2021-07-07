@@ -18,7 +18,7 @@ plugins {
     id("java-platform")
 }
 
-val core = "1.3.2"
+val core = "1.5.0-beta01"
 val appCompat = "1.2.0-rc01"
 val material = "1.3.0"
 val hilt = Versions.HILT
