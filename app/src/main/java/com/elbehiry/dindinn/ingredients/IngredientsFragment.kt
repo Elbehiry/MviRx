@@ -20,11 +20,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.elbehiry.dindinn.R
 import com.elbehiry.dindinn.databinding.IngredientsFragmentView
 import com.elbehiry.dindinn.ingredients.page.IngredientsPageFragment
@@ -61,6 +59,8 @@ class IngredientsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         changeSearchViewStyle()
         ingredientsViewModel.partialStatPublisher
             .observeOn(AndroidSchedulers.mainThread())
@@ -95,15 +95,21 @@ class IngredientsFragment : Fragment() {
     }
 
     private fun changeSearchViewStyle() {
-        val text = binding.searchIngredients.findViewById<TextView>(R.id.search_src_text)
-        text.setTextColor(ContextCompat.getColor(requireActivity(), R.color.grayCal))
-        text.setHintTextColor(ContextCompat.getColor(requireActivity(), R.color.grayCal))
+        binding.toolbar.run {
+            inflateMenu(R.menu.ingredients_menu)
+            setOnMenuItemClickListener { item ->
+                if (item.itemId == R.id.search) {
+                    openSearch()
+                    true
+                } else {
+                    false
+                }
+            }
+        }
+    }
 
-        val imvSearch: ImageView = binding.searchIngredients.findViewById(R.id.search_mag_icon)
-        imvSearch.setImageResource(R.drawable.ic_round_search_24)
-
-        val imvClose: ImageView = binding.searchIngredients.findViewById(R.id.search_close_btn)
-        imvClose.setImageResource(R.drawable.ic_baseline_close_24)
+    private fun openSearch() {
+        findNavController().navigate(R.id.action_ingredientsFragment_to_searchFragment)
     }
 
     private fun intents(): Observable<IngredientsActions> =

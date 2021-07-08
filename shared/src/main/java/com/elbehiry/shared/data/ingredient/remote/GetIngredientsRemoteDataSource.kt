@@ -25,7 +25,12 @@ import javax.inject.Inject
 class GetIngredientsRemoteDataSource @Inject constructor(
     private val api: DinDinnApi
 ) : IGetIngredientsDataSource {
+
     override fun getIngredients(id: Int): Single<List<IngredientsItem>> = api.getIngredientsById(id)
+
     override fun getIngredientsCategory(): Single<List<IngredientsCategoryItem>> =
         api.getIngredientsCategory()
+
+    override fun searchIngredients(query: String): Single<List<IngredientsItem>> =
+        api.searchIngredients(query)
 }

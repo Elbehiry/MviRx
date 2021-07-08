@@ -18,6 +18,7 @@ package com.elbehiry.shared.data.ingredient.repository
 
 import com.elbehiry.shared.data.ingredient.remote.IGetIngredientsDataSource
 import com.elbehiry.shared.domain.ingredients.IngredientsListPartialState
+import com.elbehiry.shared.domain.search.SearchPartialState
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 
@@ -48,6 +49,19 @@ class GetIngredientsRepository @Inject constructor(
                 }
             }.onErrorReturn {
                 IngredientsListPartialState.Failure(it)
+            }
+    }
+
+    override fun searchIngredients(query: String): Single<SearchPartialState> {
+        return ingredientsDataSource.searchIngredients(query)
+            .map {
+                if (it.isNullOrEmpty()) {
+                    SearchPartialState.Empty
+                } else {
+                    SearchPartialState.Ingredients(it)
+                }
+            }.onErrorReturn {
+                SearchPartialState.Failure(it)
             }
     }
 }

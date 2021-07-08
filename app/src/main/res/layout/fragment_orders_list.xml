@@ -40,7 +40,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:fontFamily="@font/sofia_pro"
                 android:onClick="@{()-> actionHandler.retry()}"
                 android:text="@string/no_order"
                 android:textColor="@color/textBlack"

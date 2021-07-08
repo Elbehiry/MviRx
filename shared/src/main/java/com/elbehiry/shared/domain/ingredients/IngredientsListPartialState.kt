@@ -59,7 +59,9 @@ sealed class IngredientsListPartialState : MVIPartialState<IngredientsViewState>
             oldVs: IngredientsViewState,
             initialVs: IngredientsViewState
         ): IngredientsViewState {
-            return initialVs.copy(ingredients = ingredients)
+            return initialVs.copy(
+                ingredients = ingredients
+            )
         }
     }
 

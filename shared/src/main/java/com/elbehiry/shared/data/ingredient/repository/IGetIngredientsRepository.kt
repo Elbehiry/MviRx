@@ -17,9 +17,11 @@
 package com.elbehiry.shared.data.ingredient.repository
 
 import com.elbehiry.shared.domain.ingredients.IngredientsListPartialState
+import com.elbehiry.shared.domain.search.SearchPartialState
 import io.reactivex.rxjava3.core.Single
 
 interface IGetIngredientsRepository {
     fun getIngredients(id: Int): Single<IngredientsListPartialState>
     fun getIngredientsCategory(): Single<IngredientsListPartialState>
+    fun searchIngredients(query: String): Single<SearchPartialState>
 }

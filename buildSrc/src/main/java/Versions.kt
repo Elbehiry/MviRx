@@ -11,4 +11,6 @@ object Versions {
     const val KOTLIN = "1.4.32"
     const val NAVIGATION = "2.3.5"
     const val HILT = "2.33-beta"
+    const val nav_version = "2.3.5"
+
 }

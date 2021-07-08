@@ -35,4 +35,10 @@ interface DinDinnApi {
 
     @GET("getIngredientsCategory")
     fun getIngredientsCategory(): Single<List<IngredientsCategoryItem>>
+
+    @GET("searchIngredients")
+    fun searchIngredients(
+        @Query("query")
+        query: String
+    ): Single<List<IngredientsItem>>
 }

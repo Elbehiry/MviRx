@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="IngredientPageListItemView">
+
+        <variable
+            name="item"
+            type="com.elbehiry.model.IngredientsItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp">
+
+        <ImageView
+            android:id="@+id/ingImage"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            app:imageUri="@{item.image}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ingTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{item.title}"
+            android:textColor="@color/textBlack"
+            android:textSize="@dimen/text_fourteen"
+            app:layout_constraintEnd_toEndOf="@+id/ingImage"
+            app:layout_constraintStart_toStartOf="@+id/ingImage"
+            app:layout_constraintTop_toBottomOf="@+id/ingImage" />
+
+        <TextView
+            android:id="@+id/ingAvailable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@{item.available &lt;6?@drawable/available_orange:@drawable/available_grey}"
+            android:paddingHorizontal="@dimen/padding_small"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="@string/available"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_fourteen"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/ingImage"
+            app:layout_constraintTop_toBottomOf="@+id/ingTitle" />
+
+        <TextView
+            android:id="@+id/ingQuantity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@{item.available &lt;6?@drawable/border_orange_background:@drawable/border_grey_background}"
+            android:gravity="center"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="@{item.available.toString()}"
+            android:textColor="@{item.available &lt;6?@color/orange:@color/textBlack}"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/ingAvailable"
+            app:layout_constraintStart_toStartOf="@+id/ingAvailable"
+            app:layout_constraintTop_toBottomOf="@+id/ingAvailable" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

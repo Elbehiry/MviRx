@@ -1,13 +1,8 @@
 <resources>
     <string name="app_name">DinDinn</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="search_for_an_item">Search for an item</string>
-    <string name="meal_holder">Japanese Fried Rice + Chicken Katsu</string>
     <string name="available">Available</string>
-    <string name="holder_num">22</string>
     <string name="auto_reject">Auto reject</string>
     <string name="accept">Accept</string>
-    <string name="expired">Expired</string>
     <string name="no_order">No orders to display</string>
     <string name="incoming">Incoming</string>
     <string name="mcc_holder">MCC Makan Place- Kitchen</string>
@@ -16,4 +11,5 @@
     <string name="items_count">+%1$s</string>
     <string name="items_id">#%1$s</string>
     <string name="ingredients">Ingredients</string>
+    <string name="a11y_search_ingredient">Ingredients Search</string>
 </resources>

@@ -19,8 +19,8 @@ package com.elbehiry.dindinn.ingredients.viewmodel
 import com.elbehiry.shared.base.BaseVM
 import com.elbehiry.shared.domain.ingredients.GetIngredientsCategoryListUseCase
 import com.elbehiry.shared.domain.ingredients.GetIngredientsListUseCase
-import com.elbehiry.shared.domain.ingredients.IngredientsListPartialState
 import com.elbehiry.shared.domain.ingredients.IngredientsViewState
+import com.elbehiry.shared.domain.ingredients.IngredientsListPartialState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.ObservableTransformer
@@ -54,7 +54,7 @@ class IngredientsViewModel @Inject constructor(
         ObservableTransformer<IngredientsActions.GetIngredients,
             IngredientsListPartialState> { actions ->
             actions.flatMap {
-                val id = GetIngredientsListUseCase.Params.create(it.id)
+                val id = GetIngredientsListUseCase.Params.create(it.categoryId)
                 getIngredientsListUseCase(id)
             }
         }
