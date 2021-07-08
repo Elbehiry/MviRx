@@ -16,6 +16,7 @@
 
 package com.elbehiry.dindinn.utils
 
+import android.view.View
 import androidx.annotation.CheckResult
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import io.reactivex.rxjava3.core.Observable
@@ -31,3 +32,5 @@ fun SwipeRefreshLayout.rxRefreshes(): Observable<Unit> {
         setOnRefreshListener(null)
     }
 }
+
+fun View.isRtl() = layoutDirection == View.LAYOUT_DIRECTION_RTL

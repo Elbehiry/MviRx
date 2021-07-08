@@ -22,6 +22,7 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.BindingConversion
 import androidx.recyclerview.widget.RecyclerView
 import com.elbehiry.dindinn.orders.presentation.adapter.OrdersAdapter
+import com.elbehiry.dindinn.utils.SpaceDecoration
 import com.elbehiry.shared.domain.orders.OrdersViewState
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -67,5 +68,13 @@ fun TextView.formatOrderDate(inputDate: String?) {
         val outputFormatter: DateFormat =
             SimpleDateFormat(resultPattern, Locale.getDefault())
         this.text = outputFormatter.format(formattedDate) ?: ""
+    }
+}
+
+@BindingAdapter("itemSpacing")
+fun itemSpacing(view: RecyclerView, dimen: Float) {
+    val space = dimen.toInt()
+    if (space > 0) {
+        view.addItemDecoration(SpaceDecoration(space, space, space, space))
     }
 }

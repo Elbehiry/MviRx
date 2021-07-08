@@ -9,4 +9,5 @@
     <dimen name="small">5dp</dimen>
     <dimen name="spacing_normal">8dp</dimen>
     <dimen name="margin_normal">16dp</dimen>
+    <dimen name="order_list_item_spacing">8dp</dimen>
 </resources>

@@ -55,6 +55,7 @@
                 android:background="@color/home_back"
                 android:visibility="@{viewState.error == null}"
                 app:adapter="@{adapter}"
+                app:itemSpacing="@{@dimen/order_list_item_spacing}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
