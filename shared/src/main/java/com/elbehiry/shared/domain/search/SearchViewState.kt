@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.elbehiry.shared.data.ingredient.remote
+package com.elbehiry.shared.domain.search
 
-import com.elbehiry.model.IngredientsCategoryItem
 import com.elbehiry.model.IngredientsItem
-import io.reactivex.rxjava3.core.Single
+import com.elbehiry.shared.base.MVIViewState
 
-interface IGetIngredientsDataSource {
-    fun getIngredients(id: Int): Single<List<IngredientsItem>>
-    fun getIngredientsCategory(): Single<List<IngredientsCategoryItem>>
-    fun searchIngredients(query: String): Single<List<IngredientsItem>>
-}
+data class SearchViewState(
+    val ingredients: List<IngredientsItem> = emptyList(),
+    val loading: Boolean = false,
+    val error: Throwable? = null,
+    val empty: Boolean = false
+) : MVIViewState

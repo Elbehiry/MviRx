@@ -2,7 +2,6 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/sample_graph"
     app:startDestination="@id/orderListFragment">
 
     <fragment
@@ -19,6 +18,15 @@
         android:id="@+id/ingredientsFragment"
         android:name="com.elbehiry.dindinn.ingredients.IngredientsFragment"
         android:label="@string/ingredients"
-        tools:layout="@layout/fragment_ingredients" />
+        tools:layout="@layout/fragment_ingredients">
+        <action
+            android:id="@+id/action_ingredientsFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
 
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.elbehiry.dindinn.search.SearchFragment"
+        android:label="@string/ingredients"
+        tools:layout="@layout/fragment_search" />
 </navigation>

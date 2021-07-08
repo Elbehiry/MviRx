@@ -14,14 +14,10 @@
  * limitations under the License.
  */
 
-package com.elbehiry.shared.data.ingredient.remote
+package com.elbehiry.dindinn.search.viewmodel
 
-import com.elbehiry.model.IngredientsCategoryItem
-import com.elbehiry.model.IngredientsItem
-import io.reactivex.rxjava3.core.Single
+import com.elbehiry.shared.base.MVIAction
 
-interface IGetIngredientsDataSource {
-    fun getIngredients(id: Int): Single<List<IngredientsItem>>
-    fun getIngredientsCategory(): Single<List<IngredientsCategoryItem>>
-    fun searchIngredients(query: String): Single<List<IngredientsItem>>
+sealed class SearchActions : MVIAction {
+    class Search(val searchQuery: String) : SearchActions()
 }
