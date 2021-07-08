@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- We use a light scrim on API 23+ since we use a light status bar -->
+</resources>

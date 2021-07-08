@@ -1,20 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="textBlack">#36373A</color>
     <color name="grayCal">#4E555F</color>
     <color name="yellow">#EDD448</color>
     <color name="orange">#FC5834</color>
     <color name="grey">#CFCFCF</color>
-    <color name="blue">#0461EB</color>
-    <color name="dark_orange">#FB2E02</color>
     <color name="home_back">#EFEFF1</color>
-    <color name="progress_grey">#EBECF0</color>
-    <color name="red">#D34644</color>
+    <color name="transparent">#0fff</color>
+    <color name="color_primary">@color/deep_sky_blue</color>
+    <color name="color_primary_variant">@color/warm_blue</color>
+    <color name="color_on_secondary">@color/white</color>
+
+    <!-- Same as textColorPrimary disabled -->
+    <!-- Same as textColorPrimary disabled -->
+
+    <!-- Scrim colors -->
+    <!-- 70% white -->
+    <color name="system_ui_scrim_black">#40000000</color> <!-- 25% black -->
+
+    <!-- We use a dark scrim by default since light status is API 23+ -->
+    <!-- We use a dark scrim by default since light nav bar is API 27+ -->
+    <color name="nav_bar_scrim">@color/system_ui_scrim_black</color>
+
+    <!-- Other colors with dark mode alternatives --><![CDATA[
+
+
+    >
+
+    ]]><!-- Other colors -->
+    <!-- 20% black -->
+
+    <color name="deep_sky_blue">#1a73e8</color> <!-- colorPrimary in Light mode-->
+    <color name="warm_blue">#574ddd</color> <!-- colorPrimaryVariant in Light mode-->
+    <!-- colorPrimary in Dark mode-->
+    <!-- colorPrimaryVariant in Dark mode-->
+
 </resources>
