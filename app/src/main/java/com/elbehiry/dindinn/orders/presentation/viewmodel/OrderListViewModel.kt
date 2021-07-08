@@ -17,6 +17,7 @@
 package com.elbehiry.dindinn.orders.presentation.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
+import com.elbehiry.model.OrdersItem
 import com.elbehiry.shared.base.BaseVM
 import com.elbehiry.shared.domain.orders.GetOrdersUseCase
 import com.elbehiry.shared.domain.orders.OrdersListPartialState
@@ -25,6 +26,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.ObservableTransformer
 import javax.inject.Inject
+
+const val ordersKey = "ordersKey"
 
 @HiltViewModel
 class OrderListViewModel @Inject constructor(
@@ -38,13 +41,22 @@ class OrderListViewModel @Inject constructor(
         result: OrdersListPartialState,
         previousState: OrdersViewState
     ): OrdersViewState {
-        return result.reduce(previousState, initialState)
+        return result.reduce(previousState, initialState).also {
+            if (!it.orders.isNullOrEmpty()) {
+                savedStateHandle[ordersKey] = it.orders
+            }
+        }
     }
 
     private val getOrders by lazy {
         ObservableTransformer<OrdersListActions.GetOrders, OrdersListPartialState> { actions ->
             actions.flatMap {
-                getOrdersUseCase(Unit)
+                val orders: List<OrdersItem>? = savedStateHandle[ordersKey]
+                if (orders.isNullOrEmpty()) {
+                    getOrdersUseCase(Unit)
+                } else {
+                    Observable.just(OrdersListPartialState.Orders(orders = orders))
+                }
             }
         }
     }

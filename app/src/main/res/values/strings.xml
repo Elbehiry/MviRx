@@ -5,7 +5,7 @@
     <string name="accept">Accept</string>
     <string name="no_order">No orders to display</string>
     <string name="incoming">Incoming</string>
-    <string name="mcc_holder">MCC Makan Place- Kitchen</string>
+    <string name="mcc_holder">MCC Makan Place</string>
     <string name="no_ingredients">No ingredients to display</string>
     <string name="addons_items_size">%1$s items</string>
     <string name="items_count">+%1$s</string>
