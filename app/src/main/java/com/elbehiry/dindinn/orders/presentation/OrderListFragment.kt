@@ -16,6 +16,9 @@
 
 package com.elbehiry.dindinn.orders.presentation
 
+import android.media.Ringtone
+import android.media.RingtoneManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,22 +29,27 @@ import androidx.navigation.fragment.findNavController
 import com.elbehiry.dindinn.R
 import com.elbehiry.dindinn.databinding.OrdersListFragmentView
 import com.elbehiry.dindinn.orders.presentation.adapter.IActionHandler
+import com.elbehiry.dindinn.orders.presentation.adapter.OnOrdersListener
 import com.elbehiry.dindinn.orders.presentation.adapter.OrdersAdapter
 import com.elbehiry.dindinn.orders.presentation.viewmodel.OrderListViewModel
 import com.elbehiry.dindinn.orders.presentation.viewmodel.OrdersListActions
 import com.elbehiry.dindinn.utils.rxRefreshes
+import com.elbehiry.model.OrdersItem
 import com.elbehiry.shared.domain.orders.OrdersListPartialState
 import com.elbehiry.shared.domain.orders.OrdersViewState
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.subjects.PublishSubject
 import timber.log.Timber
 
 @AndroidEntryPoint
-class OrderListFragment : Fragment(), IActionHandler {
+class OrderListFragment : Fragment(), IActionHandler, OnOrdersListener {
 
     lateinit var binding: OrdersListFragmentView
     private val ordersViewModel: OrderListViewModel by viewModels()
+    private val actionSubject = PublishSubject.create<OrdersItem>()
+    private var ringtoneManager: Ringtone? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -86,6 +94,32 @@ class OrderListFragment : Fragment(), IActionHandler {
 
     private fun intents() = Observable.merge(
         Observable.just(OrdersListActions.GetOrders),
-        binding.swipeRefreshLayout.rxRefreshes().map { OrdersListActions.Refresh }
+        binding.swipeRefreshLayout.rxRefreshes().map { OrdersListActions.Refresh },
+        actionSubject.map {
+            OrdersListActions.RemoveOrder(it)
+        }
     )
+
+    override fun onButtonClick(order: OrdersItem?) {
+        stopAlertMusic()
+        order?.let {
+            actionSubject.onNext(order)
+        }
+    }
+
+    private fun stopAlertMusic() {
+        if (ringtoneManager?.isPlaying == true) {
+            ringtoneManager?.stop()
+        }
+    }
+
+    override fun playAlertMusic() {
+        try {
+            val notification: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+            ringtoneManager = RingtoneManager.getRingtone(context, notification)
+            ringtoneManager?.play()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 }

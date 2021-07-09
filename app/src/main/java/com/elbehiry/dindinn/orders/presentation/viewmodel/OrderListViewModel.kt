@@ -22,6 +22,7 @@ import com.elbehiry.shared.base.BaseVM
 import com.elbehiry.shared.domain.orders.GetOrdersUseCase
 import com.elbehiry.shared.domain.orders.OrdersListPartialState
 import com.elbehiry.shared.domain.orders.OrdersViewState
+import com.elbehiry.shared.domain.orders.RemoveOrderUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.ObservableTransformer
@@ -32,7 +33,8 @@ const val ordersKey = "ordersKey"
 @HiltViewModel
 class OrderListViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
-    private val getOrdersUseCase: GetOrdersUseCase
+    private val getOrdersUseCase: GetOrdersUseCase,
+    private val removeOrderUseCase: RemoveOrderUseCase
 ) : BaseVM<OrdersListActions, OrdersViewState, OrdersListPartialState>() {
 
     override val initialState by lazy { OrdersViewState() }
@@ -69,6 +71,18 @@ class OrderListViewModel @Inject constructor(
         }
     }
 
+    private val removeOrder by lazy {
+        ObservableTransformer<OrdersListActions.RemoveOrder, OrdersListPartialState> { actions ->
+            actions.flatMap { item ->
+                val params = RemoveOrderUseCase.Params.create(
+                    item.order,
+                    savedStateHandle[ordersKey] ?: emptyList()
+                )
+                removeOrderUseCase(params)
+            }
+        }
+    }
+
     override fun handle(
         action: Observable<OrdersListActions>
     ): List<Observable<out OrdersListPartialState>> =
@@ -77,6 +91,8 @@ class OrderListViewModel @Inject constructor(
                 .take(1)
                 .compose(getOrders),
             action.ofType(OrdersListActions.Refresh::class.java)
-                .compose(refresh)
+                .compose(refresh),
+            action.ofType(OrdersListActions.RemoveOrder::class.java)
+                .compose(removeOrder)
         )
 }

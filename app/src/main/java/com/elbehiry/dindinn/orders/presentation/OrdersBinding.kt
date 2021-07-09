@@ -23,6 +23,8 @@ import androidx.databinding.BindingConversion
 import androidx.recyclerview.widget.RecyclerView
 import com.elbehiry.dindinn.orders.presentation.adapter.OrdersAdapter
 import com.elbehiry.dindinn.utils.SpaceDecoration
+import com.elbehiry.dindinn.utils.backendGeneralFormat
+import com.elbehiry.dindinn.utils.parseToDate
 import com.elbehiry.shared.domain.orders.OrdersViewState
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -60,10 +62,8 @@ fun visibility(visible: Throwable?) = if (visible == null) View.GONE else View.V
 @BindingAdapter("formatOrderDate")
 fun TextView.formatOrderDate(inputDate: String?) {
     if (inputDate != null) {
-        val inputPattern = "yyyy-MM-dd'T'HH:mm:ssZ"
         val resultPattern = "hh:mm a"
-        val formattedDate = SimpleDateFormat(inputPattern, Locale.ENGLISH)
-            .parse(inputDate)
+        val formattedDate = inputDate.parseToDate(backendGeneralFormat)
         requireNotNull(formattedDate)
         val outputFormatter: DateFormat =
             SimpleDateFormat(resultPattern, Locale.getDefault())

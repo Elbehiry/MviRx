@@ -14,13 +14,11 @@
  * limitations under the License.
  */
 
-package com.elbehiry.dindinn.orders.presentation.viewmodel
+package com.elbehiry.dindinn.orders.presentation.adapter
 
 import com.elbehiry.model.OrdersItem
-import com.elbehiry.shared.base.MVIAction
 
-sealed class OrdersListActions : MVIAction {
-    object GetOrders : OrdersListActions()
-    object Refresh : OrdersListActions()
-    class RemoveOrder(val order: OrdersItem) : OrdersListActions()
+interface OnOrdersListener {
+    fun onButtonClick(order: OrdersItem?)
+    fun playAlertMusic()
 }

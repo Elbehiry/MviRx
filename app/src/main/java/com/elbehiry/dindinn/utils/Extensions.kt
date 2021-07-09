@@ -20,6 +20,11 @@ import android.view.View
 import androidx.annotation.CheckResult
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import io.reactivex.rxjava3.core.Observable
+import java.text.SimpleDateFormat
+import java.util.Locale
+import java.util.Date
+import java.util.TimeZone
+import java.util.concurrent.TimeUnit
 
 @CheckResult
 fun SwipeRefreshLayout.rxRefreshes(): Observable<Unit> {
@@ -34,3 +39,29 @@ fun SwipeRefreshLayout.rxRefreshes(): Observable<Unit> {
 }
 
 fun View.isRtl() = layoutDirection == View.LAYOUT_DIRECTION_RTL
+
+fun String.parseToDate(inputPattern: String): Date? {
+    return SimpleDateFormat(inputPattern, Locale.ENGLISH)
+        .apply { TimeZone.getTimeZone("GMT") }
+        .parse(this)
+}
+
+fun Long.millisToSeconds(): Long = this / 1000
+
+fun Long.formatPassedTimeToString(): String {
+    val hours: Long = (TimeUnit.MILLISECONDS.toHours(this) % 24)
+    val seconds: Long = (TimeUnit.MILLISECONDS.toSeconds(this) % 60)
+    val minutes: Long = (TimeUnit.MILLISECONDS.toMinutes(this) % 60)
+    var formattedRemainingTime = ""
+
+    if (hours != 0L) {
+        formattedRemainingTime += "$hours h "
+    }
+    if (minutes != 0L) {
+        formattedRemainingTime += "$minutes m "
+    }
+    if (seconds != 0L) {
+        formattedRemainingTime += "$seconds s "
+    }
+    return formattedRemainingTime.trim()
+}

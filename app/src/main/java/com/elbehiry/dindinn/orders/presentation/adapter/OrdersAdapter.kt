@@ -22,7 +22,7 @@ import com.elbehiry.dindinn.utils.propagateTo
 import com.elbehiry.model.OrdersItem
 import kotlin.properties.Delegates
 
-class OrdersAdapter(private val actionHandler: IActionHandler) :
+class OrdersAdapter(private val actionHandler: OnOrdersListener) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var orders by Delegates.observable(mutableListOf<OrdersItem>()) { _, old, new ->
@@ -37,7 +37,7 @@ class OrdersAdapter(private val actionHandler: IActionHandler) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return OrdersViewHolder initializeWith parent
+        return OrdersViewHolder initializeWith parent andSetButtonClickHandler(actionHandler)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

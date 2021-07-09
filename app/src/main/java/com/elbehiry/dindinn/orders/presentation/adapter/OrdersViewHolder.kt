@@ -22,14 +22,52 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.elbehiry.dindinn.R
 import com.elbehiry.dindinn.databinding.OrderItemLayout
+import com.elbehiry.dindinn.utils.backendGeneralFormat
+import com.elbehiry.dindinn.utils.parseToDate
 import com.elbehiry.model.OrdersItem
+import java.util.Date
 
 class OrdersViewHolder(private val binding: OrderItemLayout) :
     RecyclerView.ViewHolder(binding.root) {
 
+    private var countDown: CountDownTask? = null
+    private var actionHandler: OnOrdersListener? = null
+    var cancelled: Boolean = false
+
     fun bind(item: OrdersItem) {
         binding.item = item
         binding.addonAdapter = AddonsAdapter(item.addon)
+        configureCountDownTask(item)
+        binding.acceptButton.setOnClickListener {
+            if (!cancelled) {
+                countDown?.cancel()
+            }
+            actionHandler?.onButtonClick(item)
+        }
+    }
+
+    private fun configureCountDownTask(item: OrdersItem) {
+        val currentTime = Date().time
+        val expiredAtDate = item.expiredAt?.parseToDate(backendGeneralFormat)?.time ?: 0
+        val alertAtDate = item.alertedAt?.parseToDate(backendGeneralFormat)?.time ?: 0
+
+        val expiredDifferenceInMills = expiredAtDate - currentTime
+        val alertDifferenceInMills = alertAtDate - currentTime
+
+        countDown = CountDownTask(
+            expiredDifferenceInMills,
+            alertDifferenceInMills,
+            onAlertTriggered = {
+                actionHandler?.playAlertMusic()
+            },
+            onFinished = {
+                cancelled = true
+                binding.isExpired = true
+            }
+        ) {
+            binding.orderRemainingTime.text = it
+        }
+        countDown?.start()
     }
 
     companion object {
@@ -47,5 +85,10 @@ class OrdersViewHolder(private val binding: OrderItemLayout) :
         infix fun initializeWith(parent: ViewGroup): OrdersViewHolder {
             return OrdersViewHolder(inflateItemUsing(parent))
         }
+    }
+
+    infix fun andSetButtonClickHandler(actionHandler: OnOrdersListener): OrdersViewHolder {
+        this.actionHandler = actionHandler
+        return this
     }
 }

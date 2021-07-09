@@ -3,6 +3,7 @@
     <string name="available">Available</string>
     <string name="auto_reject">Auto reject</string>
     <string name="accept">Accept</string>
+    <string name="expired">Expired</string>
     <string name="no_order">No orders to display</string>
     <string name="incoming">Incoming</string>
     <string name="mcc_holder">MCC Makan Place</string>
