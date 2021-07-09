@@ -106,4 +106,11 @@ dependencies {
 
     implementation(Libs.RX_JAVA)
     implementation(Libs.RX_KOTLIN)
+
+    // Unit tests
+    testImplementation(Libs.JUNIT)
+    testImplementation(Libs.JUNIT_EXT)
+    testImplementation(Libs.MOCKK)
+    testImplementation(Libs.ASSERT_J)
+    testImplementation(Libs.FAKER)
 }

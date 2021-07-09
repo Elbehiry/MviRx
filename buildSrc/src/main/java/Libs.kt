@@ -34,5 +34,8 @@ object Libs {
     const val TIMBER = "com.jakewharton.timber:timber"
     const val NAVIGATION_KTX = "androidx.navigation:navigation-fragment-ktx"
     const val NAVIGATION_UI = "androidx.navigation:navigation-ui-ktx"
+    const val MOCKK = "io.mockk:mockk"
+    const val ASSERT_J = "org.assertj:assertj-core"
+    const val FAKER = "com.github.javafaker:javafaker"
 
 }

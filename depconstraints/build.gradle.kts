@@ -43,6 +43,9 @@ val timber = "4.7.1"
 val navigation = "2.3.4"
 val swipeRefreshLayout = "1.2.0-alpha01"
 val rxSwipeRefreshLayout = "4.0.0"
+val assertJVersion = "3.19.0"
+val mockkVersion = "1.10.6"
+val faker = "1.0.2"
 
 dependencies {
     constraints {
@@ -83,5 +86,9 @@ dependencies {
         api("${Libs.NAVIGATION_UI}:$navigation")
         api("${Libs.SWIPE_REFRESH_LAYOUT}:$swipeRefreshLayout")
         api("${Libs.RX_SWIPE_REFRESH_LAYOUT}:$rxSwipeRefreshLayout")
+        api("${Libs.FAKER}:$faker")
+        api("${Libs.ASSERT_J}:$assertJVersion")
+        api("${Libs.MOCKK}:$mockkVersion")
+
     }
 }
