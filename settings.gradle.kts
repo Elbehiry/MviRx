@@ -12,3 +12,4 @@ include(
     ":shared",
     ":model"
 )
+include(":test_shared")

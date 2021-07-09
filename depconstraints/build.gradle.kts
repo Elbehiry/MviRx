@@ -89,6 +89,5 @@ dependencies {
         api("${Libs.FAKER}:$faker")
         api("${Libs.ASSERT_J}:$assertJVersion")
         api("${Libs.MOCKK}:$mockkVersion")
-
     }
 }
