@@ -83,6 +83,7 @@ dependencies {
     kapt(platform(project(":depconstraints")))
     api(project(":model"))
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    testImplementation(project(":test_shared"))
 
     // OkHttp
     implementation(Libs.OKHTTP)

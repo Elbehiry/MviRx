@@ -10,6 +10,6 @@ include(
     ":app",
     ":depconstraints",
     ":shared",
-    ":model"
+    ":model",
+    ":test_shared"
 )
-include(":test_shared")
