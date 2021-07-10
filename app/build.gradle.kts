@@ -82,6 +82,7 @@ dependencies {
     kapt(platform(project(":depconstraints")))
     implementation(project(":shared"))
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    testImplementation(project(":test_shared"))
     implementation(Libs.APP_COMPAT)
     implementation(Libs.MATERIAL)
     implementation(Libs.CONSTRAINT_LAYOUT)
@@ -111,4 +112,11 @@ dependencies {
 
     implementation(Libs.GLIDE)
     kapt(Libs.GLIDE_COMPILER)
+
+    // Unit tests
+    testImplementation(Libs.JUNIT)
+    testImplementation(Libs.JUNIT_EXT)
+    testImplementation(Libs.MOCKK)
+    testImplementation(Libs.ASSERT_J)
+    testImplementation(Libs.FAKER)
 }
