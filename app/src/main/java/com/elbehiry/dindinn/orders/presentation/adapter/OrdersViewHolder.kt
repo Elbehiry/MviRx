@@ -36,6 +36,7 @@ class OrdersViewHolder(private val binding: OrderItemLayout) :
 
     fun bind(item: OrdersItem) {
         binding.item = item
+        binding.isExpired = isExpiredItem(item.expiredAt)
         binding.addonAdapter = AddonsAdapter(item.addon)
         configureCountDownTask(item)
         binding.acceptButton.setOnClickListener {
@@ -44,6 +45,11 @@ class OrdersViewHolder(private val binding: OrderItemLayout) :
             }
             actionHandler?.onButtonClick(item)
         }
+    }
+
+    private fun isExpiredItem(expiredAt: String?): Boolean {
+        val expiredAtDate = expiredAt?.parseToDate(backendGeneralFormat)?.time ?: 0
+        return Date().time > expiredAtDate
     }
 
     private fun configureCountDownTask(item: OrdersItem) {
