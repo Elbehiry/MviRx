@@ -37,5 +37,7 @@ object Libs {
     const val MOCKK = "io.mockk:mockk"
     const val ASSERT_J = "org.assertj:assertj-core"
     const val FAKER = "com.github.javafaker:javafaker"
+    const val MOCKITO_CORE = "org.mockito:mockito-core"
+    const val MOCKITO_KOTLIN = "com.nhaarman:mockito-kotlin"
 
 }

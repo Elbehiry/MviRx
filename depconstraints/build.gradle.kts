@@ -46,6 +46,8 @@ val rxSwipeRefreshLayout = "4.0.0"
 val assertJVersion = "3.19.0"
 val mockkVersion = "1.10.6"
 val faker = "1.0.2"
+val mockito = "3.3.1"
+val mockitoKotlin = "1.5.0"
 
 dependencies {
     constraints {
@@ -89,5 +91,7 @@ dependencies {
         api("${Libs.FAKER}:$faker")
         api("${Libs.ASSERT_J}:$assertJVersion")
         api("${Libs.MOCKK}:$mockkVersion")
+        api("${Libs.MOCKITO_CORE}:$mockito")
+        api("${Libs.MOCKITO_KOTLIN}:$mockitoKotlin")
     }
 }
