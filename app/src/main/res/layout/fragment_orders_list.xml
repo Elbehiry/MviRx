@@ -70,7 +70,7 @@
                 android:onClick="@{()-> actionHandler.retry()}"
                 android:text="@string/no_order"
                 android:textColor="@color/textBlack"
-                app:goneUnless="@{viewState.orders.isEmpty()}"
+                app:goneUnless="@{viewState.orders.isEmpty() &amp;&amp; !viewState.loading}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/order_fetch_progress" />
