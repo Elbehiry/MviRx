@@ -35,19 +35,6 @@
                 app:actionHandler="@{actionHandler}"
                 app:itemCounts="@{viewState.orders != null ?viewState.orders.size():0}" />
 
-            <TextView
-                android:id="@+id/order_fetch_error"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:onClick="@{()-> actionHandler.retry()}"
-                android:text="@string/no_order"
-                android:textColor="@color/textBlack"
-                android:visibility="@{viewState.error}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/order_fetch_progress" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/order_recycler_view"
                 android:layout_width="0dp"
@@ -74,6 +61,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/order_fetch_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:onClick="@{()-> actionHandler.retry()}"
+                android:text="@string/no_order"
+                android:textColor="@color/textBlack"
+                app:goneUnless="@{viewState.orders.isEmpty()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/order_fetch_progress" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

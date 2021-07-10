@@ -44,9 +44,7 @@ class OrderListViewModel @Inject constructor(
         previousState: OrdersViewState
     ): OrdersViewState {
         return result.reduce(previousState, initialState).also {
-            if (!it.orders.isNullOrEmpty()) {
-                savedStateHandle[ordersKey] = it.orders
-            }
+            savedStateHandle[ordersKey] = it.orders
         }
     }
 
@@ -54,7 +52,7 @@ class OrderListViewModel @Inject constructor(
         ObservableTransformer<OrdersListActions.GetOrders, OrdersListPartialState> { actions ->
             actions.flatMap {
                 val orders: List<OrdersItem>? = savedStateHandle[ordersKey]
-                if (orders.isNullOrEmpty()) {
+                if (orders == null) {
                     getOrdersUseCase(Unit)
                 } else {
                     Observable.just(OrdersListPartialState.Orders(orders = orders))

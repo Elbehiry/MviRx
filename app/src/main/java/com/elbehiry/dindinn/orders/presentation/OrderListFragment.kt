@@ -16,6 +16,7 @@
 
 package com.elbehiry.dindinn.orders.presentation
 
+import android.media.MediaPlayer
 import android.media.Ringtone
 import android.media.RingtoneManager
 import android.net.Uri
@@ -42,6 +43,8 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.subjects.PublishSubject
 import timber.log.Timber
+import android.content.res.AssetFileDescriptor
+
 
 @AndroidEntryPoint
 class OrderListFragment : Fragment(), IActionHandler, OnOrdersListener {
@@ -49,7 +52,11 @@ class OrderListFragment : Fragment(), IActionHandler, OnOrdersListener {
     lateinit var binding: OrdersListFragmentView
     private val ordersViewModel: OrderListViewModel by viewModels()
     private val actionSubject = PublishSubject.create<OrdersItem>()
-    private var ringtoneManager: Ringtone? = null
+    private lateinit var player: MediaPlayer
+    private val smsSound by lazy {
+        requireActivity().assets.openFd("sms.mp3")
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -108,17 +115,25 @@ class OrderListFragment : Fragment(), IActionHandler, OnOrdersListener {
     }
 
     private fun stopAlertMusic() {
-        if (ringtoneManager?.isPlaying == true) {
-            ringtoneManager?.stop()
+        if (::player.isInitialized && player.isPlaying) {
+            player.stop()
         }
     }
 
     override fun playAlertMusic() {
         try {
-            val notification: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
-            ringtoneManager = RingtoneManager.getRingtone(context, notification)
-            ringtoneManager?.play()
-        } catch (e: Exception) {
+            player = MediaPlayer()
+            player.setDataSource(
+                smsSound.fileDescriptor,
+                smsSound.startOffset,
+                smsSound.length
+            )
+            smsSound.close()
+            player.prepare()
+            player.setVolume(1f, 1f)
+            player.isLooping = false
+            player.start()
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
     }

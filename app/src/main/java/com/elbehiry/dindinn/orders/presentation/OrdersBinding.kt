@@ -39,8 +39,7 @@ fun RecyclerView.setRecipesState(oldState: OrdersViewState?, viewState: OrdersVi
 }
 
 private fun RecyclerView.handleAdapterStates(viewState: OrdersViewState) {
-    if (viewState.orders.isNotEmpty())
-        setRecipesToAdapter(viewState)
+    setRecipesToAdapter(viewState)
 }
 
 private fun RecyclerView.setRecipesToAdapter(viewState: OrdersViewState) {
