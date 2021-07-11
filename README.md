@@ -9,7 +9,7 @@
 <img src="https://user-images.githubusercontent.com/8813304/125169264-a510db00-e1a9-11eb-8f7e-0c649b3b66b7.png" width="17%"/>
 <img src="https://user-images.githubusercontent.com/8813304/125169272-ab9f5280-e1a9-11eb-9fc9-fcae706d1615.png" width="17%"/>
 <img src="https://user-images.githubusercontent.com/8813304/125169284-bd80f580-e1a9-11eb-8b47-6428ab6d0167.png" width="17%"/>
-<img src="https://s6.gifyu.com/images/ezgif.com-gif-makere097f3ef4d9a6fc9.gif" width="17%"/>
+<img src="https://user-images.githubusercontent.com/8813304/125213788-1f2d8680-e2b4-11eb-8c94-1040cd083697.gif" width="17%"/>
 </p>
 
 ## Tech stack & Open-source libraries
