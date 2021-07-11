@@ -65,7 +65,7 @@ class OrderListViewModelTest {
     }
 
     @Test
-    fun `should start with loading`() {
+    fun `get orders should start with loading`() {
         every { savedStateHandle.get<List<OrdersItem>?>(ordersKey) } returns null
         every { getOrdersUseCase(Unit) } returns Observable.just(
             OrdersListPartialState.Loading
