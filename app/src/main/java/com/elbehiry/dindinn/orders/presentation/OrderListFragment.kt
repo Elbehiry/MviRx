@@ -17,9 +17,6 @@
 package com.elbehiry.dindinn.orders.presentation
 
 import android.media.MediaPlayer
-import android.media.Ringtone
-import android.media.RingtoneManager
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -43,8 +40,6 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.subjects.PublishSubject
 import timber.log.Timber
-import android.content.res.AssetFileDescriptor
-
 
 @AndroidEntryPoint
 class OrderListFragment : Fragment(), IActionHandler, OnOrdersListener {
@@ -56,7 +51,6 @@ class OrderListFragment : Fragment(), IActionHandler, OnOrdersListener {
     private val smsSound by lazy {
         requireActivity().assets.openFd("sms.mp3")
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
