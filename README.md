@@ -1,4 +1,5 @@
-<h1 align="center">DinDinn</h1>
+<h1 align="center">MviRx</h1>
+<h3 align="center">this is android showcase to use MVI architecture with RxJava</h3>
 <p align="center">
   <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
   <a href="https://android-arsenal.com/api?level=21"><img alt="API" src="https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat"/></a>
